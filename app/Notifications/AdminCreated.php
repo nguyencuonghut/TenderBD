@@ -47,7 +47,7 @@ class AdminCreated extends Notification implements ShouldQueue
         $url = '/admin/';
         $admin = Admin::findOrFail($this->admin_id);
         return (new MailMessage)
-                    ->subject('Kích hoạt tài khoản Admin phần mềm Tender Honghafeed ' . $admin->name)
+                    ->subject('Kích hoạt tài khoản Admin phần mềm Tender Hồng Hà Bình Định ' . $admin->name)
                     ->line('Xin mời kích hoạt tài khoản: ' . $admin->name .  ' (' . $admin->email . ')')
                     ->line('Mật khẩu: ' . $this->password)
                     ->action('Đăng nhập tài khoản của bạn', url($url))

@@ -48,7 +48,7 @@ class TenderResult extends Notification implements ShouldQueue
         $selected_bids = Bid::where('tender_id', $tender->id)->where('is_selected', true)->get();
         return (new MailMessage)
                     ->subject('Thư báo kết quả đấu thầu: ' . $tender->title)
-                    ->line('Công ty CP dinh dưỡng Hồng Hà xin thông báo kết quả đấu thầu cho: ' . $tender->title)
+                    ->line('Công ty CP dinh dưỡng Hồng Hà Bình Định xin thông báo kết quả đấu thầu cho: ' . $tender->title)
                     ->action('Mở tender', url($url))
                     ->line('Xin cảm ơn!')
                     ->markdown('mail.tender.result', ['url' => url($url), 'tender' => $tender, 'selected_bids' => $selected_bids]);

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Honghafeed | Log in</title>
+  <title>Log in</title>
 
   <link rel="shortcut icon" href="{{ asset('favico.png') }}" />
   <!-- Google Font: Source Sans Pro -->
@@ -18,7 +18,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="/">HONGHAFEED</a>
+    <a href="/">HONGHABĐ</a>
   </div>
   <!-- /.login-logo -->
   <div class="card">

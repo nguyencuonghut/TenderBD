@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Honghafeed | Log in</title>
+  <title>Log in</title>
 
   <link rel="shortcut icon" href="{{ asset('favico.png') }}" />
   <!-- Google Font: Source Sans Pro -->
@@ -20,7 +20,7 @@
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="{{route('admin.home')}}" class="h1"><b>Honghafeed</b>JSC</a>
+      <a href="{{route('admin.home')}}" class="h1"><b>HonghaBĐ</b></a>
     </div>
     <div class="card-body">
         <form action="{{route('admin.login')}}" method="post">

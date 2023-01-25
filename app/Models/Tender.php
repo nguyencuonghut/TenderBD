@@ -46,7 +46,7 @@ class Tender extends Model
 
     public function routeNotificationForMail()
     {
-        return 'nvkiemsoat@honghafeed.com.vn';
+        return 'bdkiemsoatmuahang@honghafeed.com.vn';
     }
 
     public function propose()

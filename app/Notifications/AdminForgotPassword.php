@@ -47,7 +47,7 @@ class AdminForgotPassword extends Notification implements ShouldQueue
     {
         $url = '/admin/reset-password/' . $this->token;
         return (new MailMessage)
-                    ->subject('Cấp lại mật khẩu Tender - Honghafeed')
+                    ->subject('Cấp lại mật khẩu Tender - Hồng Hà Bình Định')
                     ->line('Bạn vừa yêu cầu cấp lại mật khẩu cho ' . $this->admin_email . '. Bạn hãy ấn nút dưới đây.')
                     ->action('Yêu cầu cấp mật khẩu', url($url))
                     ->line('Xin cảm ơn!');

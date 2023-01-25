@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Honghafeed | Quên mật khẩu</title>
+  <title>Quên mật khẩu</title>
 
   <link rel="shortcut icon" href="{{ asset('favico.png') }}" />
   <!-- Google Fphpont: Source Sans Pro -->
@@ -18,7 +18,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="{{route('admin.home')}}" class="h1"><b>Honghafeed</b>JSC</a>
+    <a href="{{route('admin.home')}}" class="h1"><b>HonghaBĐ</b></a>
 </div>
   <!-- /.login-logo -->
   <div class="card">

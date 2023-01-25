@@ -1,7 +1,7 @@
 @component('mail::message', ['tender' => $tender])
 Xin chào,
 
-Công ty cổ phần dinh dưỡng Hồng Hà xin thông báo kết quả đấu thầu: {{$tender->title}}
+Công ty cổ phần dinh dưỡng Hồng Hà Bình Định xin thông báo kết quả đấu thầu: {{$tender->title}}
 
 @component('mail::table',['selected_bids' => $selected_bids])
 | Số lượng      | Giá           | Thời gian giao  |

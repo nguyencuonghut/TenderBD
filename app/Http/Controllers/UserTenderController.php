@@ -56,7 +56,7 @@ class UserTenderController extends Controller
     public function anyData()
     {
         $user_tenders = collect();
-        $tenders = Tender::where('status', '<>', 'Mở')->orderBy('id', 'desc')->select(['id', 'title', 'tender_end_time', 'status'])->get();
+        $tenders = Tender::where('status', '<>', 'Mở')->orderBy('id', 'desc')->select(['id', 'title', 'tender_end_time', 'status', 'cancel_reason'])->get();
         foreach($tenders as $tender) {
             $selected_supplier_ids = TenderSuppliersSelectedStatus::where('tender_id', $tender->id)->where('is_selected', 1)->pluck('supplier_id')->toArray();
             if(in_array(Auth::user()->supplier_id, $selected_supplier_ids)) {
@@ -83,6 +83,9 @@ class UserTenderController extends Controller
                 } else {
                     return '<span class="badge badge-warning">Đang diễn ra</span>';
                 }
+            })
+            ->editColumn('cancel_reason', function ($user_tenders) {
+                return $user_tenders->cancel_reason;
             })
             ->rawColumns(['title', 'status'])
             ->make(true);

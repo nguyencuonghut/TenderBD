@@ -294,7 +294,7 @@ class AdminTenderController extends Controller
 
     public function anyData()
     {
-        $tenders = Tender::with('creator')->orderBy('id', 'desc')->select(['id', 'title', 'tender_end_time', 'creator_id', 'status'])->get();
+        $tenders = Tender::with('creator')->orderBy('id', 'desc')->select(['id', 'title', 'tender_end_time', 'creator_id', 'status', 'cancel_reason'])->get();
         return Datatables::of($tenders)
             ->addIndexColumn()
             ->editColumn('titlelink', function ($tenders) {
@@ -316,6 +316,9 @@ class AdminTenderController extends Controller
             })
             ->editColumn('tender_end_time', function ($tenders) {
                 return date('d/m/Y H:i', strtotime($tenders->tender_end_time));
+            })
+            ->editColumn('cancel_reason', function ($tenders) {
+                return $tenders->cancel_reason;
             })
             ->addColumn('actions', function ($tenders) {
                 $action = '';

@@ -46,8 +46,9 @@
                   <tr>
                     <th>STT</th>
                     <th>Tiêu đề</th>
-                    <th>Thời gian đóng thầu</th>
+		    <th>Thời gian đóng thầu</th>
                     <th>Trạng thái</th>
+                    <th style="width: 15%;">Lý do hủy</th>
                   </tr>
                   </thead>
                 </table>
@@ -96,7 +97,7 @@
                 extend: 'copy',
                 footer: true,
                 exportOptions: {
-                    columns: [0,1,2,3]
+                    columns: [0,1,2,3,4]
                 }
             },
             /*
@@ -104,7 +105,7 @@
                 extend: 'csv',
                 footer: true,
                 exportOptions: {
-                    columns: [0,1,2,3]
+                    columns: [0,1,2,3,4]
                 }
 
             },
@@ -112,14 +113,14 @@
                 extend: 'excel',
                 footer: true,
                 exportOptions: {
-                    columns: [0,1,2,3]
+                    columns: [0,1,2,3,4]
                 }
             },
             {
                 extend: 'pdf',
                 footer: true,
                 exportOptions: {
-                    columns: [0,1,2,3]
+                    columns: [0,1,2,3,4]
                 }
             },
             */
@@ -127,14 +128,14 @@
                 extend: 'print',
                 footer: true,
                 exportOptions: {
-                    columns: [0,1,2,3]
+                    columns: [0,1,2,3,4]
                 }
             },
             {
                 extend: 'colvis',
                 footer: true,
                 exportOptions: {
-                    columns: [0,1,2,3]
+                    columns: [0,1,2,3,4]
                 }
             }
         ],
@@ -144,7 +145,8 @@
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
             {data: 'title', name: 'title'},
             {data: 'tender_end_time', name: 'tender_end_time'},
-            {data: 'status', name: 'status'},
+	    {data: 'status', name: 'status'},
+	    {data: 'cancel_reason', name: 'cancel_reason'},
        ]
       }).buttons().container().appendTo('#tenders-table_wrapper .col-md-6:eq(0)');
     });

@@ -294,7 +294,7 @@ class AdminTenderController extends Controller
 
     public function anyData()
     {
-        $tenders = Tender::with('creator')->orderBy('id', 'desc')->select(['id', 'title', 'tender_end_time', 'creator_id', 'status'])->get();
+        $tenders = Tender::with('creator')->orderBy('id', 'desc')->select(['id', 'title', 'tender_end_time', 'creator_id', 'status', 'cancel_reason'])->get();
         return Datatables::of($tenders)
             ->addIndexColumn()
             ->editColumn('titlelink', function ($tenders) {
@@ -316,6 +316,9 @@ class AdminTenderController extends Controller
             })
             ->editColumn('tender_end_time', function ($tenders) {
                 return date('d/m/Y H:i', strtotime($tenders->tender_end_time));
+	    })
+	    ->editColumn('cancel_reason', function ($tenders) {
+                return $tenders->cancel_reason;
             })
             ->addColumn('actions', function ($tenders) {
                 $action = '';
@@ -808,7 +811,7 @@ class AdminTenderController extends Controller
     {
         $tender = Tender::findOrFail($id);
         if($tender->manager_id == Auth::user()->id
-            && $tender->manager_id == Auth::user()->id){
+            && 'Đồng ý' == $tender->audit_result){
             return view('admin.tender.approve', ['tender' => $tender]);
         }else{
             Alert::toast('Bạn không có quyền phê duyệt tender này!', 'error', 'top-right');

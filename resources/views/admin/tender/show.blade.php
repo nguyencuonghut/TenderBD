@@ -334,7 +334,14 @@
                                                     @if($current_bid != null)
                                                     <td>
                                                         - Giá: {{$current_bid->price}} ({{$current_bid->price_unit}}) <br>
-                                                        - Lượng chào: {{number_format($current_bid->bid_quantity, 0, '.', ',')}} {{$current_bid->bid_quantity_unit}} <br>
+							- Lượng chào: {{number_format($current_bid->bid_quantity, 0, '.', ',')}} {{$current_bid->bid_quantity_unit}} <br>
+							@if($current_bid->pack)
+                                                        - Quy cách: {{$current_bid->pack}} <br>
+                                                        @endif
+                                                        @if($current_bid->delivery_time)
+							- Thời gian giao: {{$current_bid->delivery_time}}
+							<br>
+							@endif
                                                         @if($current_bid->seller)
                                                         - Bên bán: {{$current_bid->seller}}
                                                         @endif
@@ -496,7 +503,8 @@
                                 @if($tender->manager_id == Auth::user()->id
                                     && Carbon\Carbon::now()->greaterThan($tender->tender_end_time)
                                     && $tender->status == 'Đang kiểm tra'
-                                    && 0 != $selected_bids->count())
+				    && 0 != $selected_bids->count()
+				    && 'Đồng ý' == $tender->audit_result)
                                     <a href="{{route('admin.tenders.getApproveResult', $tender->id)}}">
                                         <button role="button" type="button" class="btn btn-success float-right">Duyệt kết quả</button>
                                     </a>

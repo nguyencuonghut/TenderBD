@@ -119,7 +119,7 @@
                 extend: 'excel',
                 footer: true,
                 exportOptions: {
-                    columns: [0,1,2,3,4],
+                    columns: [0,1,2,3,4]
                 }
             },
             {
@@ -151,8 +151,8 @@
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
             {data: 'titlelink', name: 'title'},
             {data: 'tender_end_time', name: 'tender_end_time'},
-	    {data: 'status', name: 'status'},
-	    {data: 'cancel_reason', name: 'cancel_reason'},
+            {data: 'status', name: 'status'},
+            {data: 'cancel_reason', name: 'cancel_reason'},
             @if('Quản lý' != Auth::user()->role->name)
             {data: 'actions', name: 'actions', orderable: false, searchable: false},
             @endif

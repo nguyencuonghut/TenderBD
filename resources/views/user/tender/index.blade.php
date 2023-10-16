@@ -145,8 +145,8 @@
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
             {data: 'title', name: 'title'},
             {data: 'tender_end_time', name: 'tender_end_time'},
-	    {data: 'status', name: 'status'},
-	    {data: 'cancel_reason', name: 'cancel_reason'},
+            {data: 'status', name: 'status'},
+            {data: 'cancel_reason', name: 'cancel_reason'},
        ]
       }).buttons().container().appendTo('#tenders-table_wrapper .col-md-6:eq(0)');
     });

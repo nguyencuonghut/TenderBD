@@ -320,6 +320,9 @@ class AdminTenderController extends Controller
 	    ->editColumn('cancel_reason', function ($tenders) {
                 return $tenders->cancel_reason;
             })
+            ->editColumn('cancel_reason', function ($tenders) {
+                return $tenders->cancel_reason;
+            })
             ->addColumn('actions', function ($tenders) {
                 $action = '';
                 if(Auth::user()->can('change-status')){

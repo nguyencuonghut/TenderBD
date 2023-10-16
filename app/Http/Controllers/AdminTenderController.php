@@ -316,10 +316,7 @@ class AdminTenderController extends Controller
             })
             ->editColumn('tender_end_time', function ($tenders) {
                 return date('d/m/Y H:i', strtotime($tenders->tender_end_time));
-	    })
-	    ->editColumn('cancel_reason', function ($tenders) {
-                return $tenders->cancel_reason;
-            })
+	        })
             ->editColumn('cancel_reason', function ($tenders) {
                 return $tenders->cancel_reason;
             })

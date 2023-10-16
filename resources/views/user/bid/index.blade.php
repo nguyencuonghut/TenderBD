@@ -53,6 +53,7 @@
                     @if($is_rating)
                     <th>Xếp hạng</th>
                     @endif
+                    <th>Số lần đã chào</th>
                     @if('Đóng' != $tender->status
                         && Carbon\Carbon::now()->lessThan($tender->tender_end_time))
                     <th style="width: 10%;">Thao tác</th>
@@ -88,16 +89,24 @@
                     @if($is_rating)
                     <td>@if(count(array_keys($all_current_bid_prices, $bid->price)) > 1)<i class="fas fa-layer-group" style="color:orange;"></i>@endif {{$my_key + 1}} | {{sizeof($all_current_bid_prices)}} bids</td>
                     @endif
+                    <td>
+                        @php
+                            $bid_logs_cnt = App\Models\UserActivityLog::where('quantity_id', $bid->quantity_id)->where('activity_type', '<>', 'Xóa')->count();
+                        @endphp
+                            {{$bid_logs_cnt}}/5
+                    </td>
                     @if('Đóng' != $tender->status
                         && Carbon\Carbon::now()->lessThan($tender->tender_end_time))
                     <td>
-                        <a href="{{route('user.bids.edit', $bid->id)}}" class="btn btn-dark btn-sm"><i class="fas fa-pen"></i></a>
-                        <form style="display:inline" action="{{ route('user.bids.destroy', $bid->id) }}" method="POST">
-                          <input type="hidden" name="_method" value="DELETE">
-                          <button type="submit" name="submit" onclick="return confirm('Bạn có muốn xóa?')" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
-                          {{csrf_field()}}
-                          @method('delete')
-                        </form>
+                        @if($bid_logs_cnt < 5)
+                          <a href="{{route('user.bids.edit', $bid->id)}}" class="btn btn-dark btn-sm"><i class="fas fa-pen"></i></a>
+                          <form style="display:inline" action="{{ route('user.bids.destroy', $bid->id) }}" method="POST">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" name="submit" onclick="return confirm('Bạn có muốn xóa?')" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                            {{csrf_field()}}
+                            @method('delete')
+                          </form>
+                        @endif
                     </td>
                     @endif
                   </tr>

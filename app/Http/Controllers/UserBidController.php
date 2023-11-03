@@ -50,7 +50,7 @@ class UserBidController extends Controller
     public function destroy($id)
     {
         $bid = Bid::findOrFail($id);
-        $bid_logs_cnt = UserActivityLog::where('quantity_id', $bid->quantity_id)->where('activity_type', '<>', 'Xóa')->count();
+        $bid_logs_cnt = UserActivityLog::where('user_id', Auth::user()->id)->where('quantity_id', $bid->quantity_id)->where('activity_type', '<>', 'Xóa')->count();
         if($bid_logs_cnt >= 5){
             Alert::toast('Bạn đã vượt quá 5 lần sửa giá cho phép!', 'error', 'top-right');
             return redirect()->back();
@@ -113,7 +113,7 @@ class UserBidController extends Controller
                 return redirect()->back();
             }
 
-            $bid_logs_cnt = UserActivityLog::where('quantity_id', $request->quantity_id)->where('activity_type', '<>', 'Xóa')->count();
+            $bid_logs_cnt = UserActivityLog::where('user_id', Auth::user()->id)->where('quantity_id', $request->quantity_id)->where('activity_type', '<>', 'Xóa')->count();
             if($bid_logs_cnt >= 5){
                 Alert::toast('Bạn đã vượt quá 5 lần sửa giá cho phép!', 'error', 'top-right');
                 return redirect()->back();
@@ -202,7 +202,7 @@ class UserBidController extends Controller
     {
         $bid = Bid::findOrFail($id);
 
-        $bid_logs_cnt = UserActivityLog::where('quantity_id', $bid->quantity_id)->where('activity_type', '<>', 'Xóa')->count();
+        $bid_logs_cnt = UserActivityLog::where('user_id', Auth::user()->id)->where('quantity_id', $bid->quantity_id)->where('activity_type', '<>', 'Xóa')->count();
         if($bid_logs_cnt >= 5){
             Alert::toast('Bạn đã vượt quá 5 lần sửa giá cho phép!', 'error', 'top-right');
             return redirect()->back();
